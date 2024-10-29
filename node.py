@@ -32,3 +32,6 @@ def register_nodes():
         peers.add(node)
     return jsonify({"message": "Nodes registered successfully", "nodes": list(peers)}), 201
 
+@app.route('/nodes', methods=['GET'])
+def get_nodes():
+    return jsonify({"nodes": list(peers)}), 200
