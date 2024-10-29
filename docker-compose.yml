@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  node1:
+    build: .
+    container_name: node1
+    environment:
+      - FLASK_ENV=development
+    ports:
+      - "5000:5000"
+    command: ["python", "run_node.py"]
+
+  node2:
+    build: .
+    container_name: node2
+    environment:
+      - FLASK_ENV=development
+    ports:
+      - "5001:5000"  # Maps port 5001 on host to 5000 in container
+    command: ["python", "run_node.py"]
+
+  node3:
+    build: .
+    container_name: node3
+    environment:
+      - FLASK_ENV=development
+    ports:
+      - "5002:5000"  # Maps port 5002 on host to 5000 in container
+    command: ["python", "run_node.py"]
