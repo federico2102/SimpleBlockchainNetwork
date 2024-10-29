@@ -20,11 +20,9 @@ class Block:
             self.nonce += 1
             self.hash = self.calculate_hash()
 
-
 def create_genesis_block():
     # Fixed timestamp and data for consistent genesis block across nodes
     return Block(0, "0", 1635638400, "Genesis Block")
-
 
 class Blockchain:
     def __init__(self):

@@ -6,6 +6,7 @@ services:
     container_name: node1
     environment:
       - FLASK_ENV=development
+      - PEERS=http://node2:5000,http://node3:5000
     ports:
       - "5000:5000"
     command: ["python", "run_node.py"]
@@ -15,8 +16,9 @@ services:
     container_name: node2
     environment:
       - FLASK_ENV=development
+      - PEERS=http://node1:5000,http://node3:5000
     ports:
-      - "5001:5000"  # Maps port 5001 on host to 5000 in container
+      - "5001:5000"
     command: ["python", "run_node.py"]
 
   node3:
@@ -24,6 +26,7 @@ services:
     container_name: node3
     environment:
       - FLASK_ENV=development
+      - PEERS=http://node1:5000,http://node2:5000
     ports:
-      - "5002:5000"  # Maps port 5002 on host to 5000 in container
+      - "5002:5000"
     command: ["python", "run_node.py"]
